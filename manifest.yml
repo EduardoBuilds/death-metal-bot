@@ -1,0 +1,5 @@
+---
+applications:
+- name: death-metal-bot
+  memory: 256M
+  instances: 1
