@@ -124,7 +124,7 @@ function createSongTitle(){
 	lastTemplate = pickRandom(markovChain[lastTemplate])
 }
 updateMessage();
-// setInterval(function(){ createSongTitle()},1000*60*60)
+setInterval(function(){ createSongTitle()},1000*60*60)
 
 //DEV ONLY
 // setInterval(function(){ createSongTitle()},1000*2)
