@@ -28,30 +28,60 @@ var templates = {
 	verbAgent:function(){
 		return pickRandom(resources.pastTenseVerbs)+' by '+pickRandom(resources.agents)
 	},
+	actionsOfTheAdjective:function(){
+		return pickRandom(resources.metalSoundingVerbs)+ ' of the '+pickRandom(resources.adjectives)
+	},
 	decayedPartOfTheAgent:function(){
 		return pickRandom(resources.statesOfDecay)+' '+pickRandom(resources.pluralBodyParts)+' of the '+pickRandom(resources.agents)
 	},
 	violentMedicalLong:function(){
 		return pickRandom(resources.violentAdverbs)+' '+pickRandom(resources.medicalTerms)+' of the '+pickRandom(resources.adjectives)
+	},
+	medicalDisaster:function(){
+		return pickRandom(resources.medicalTerms)+' '+pickRandom(resources.naturalDisasters)
+	},
+	decayedDisaster:function(){
+		return pickRandom(resources.statesOfDecay)+' '+pickRandom(resources.naturalDisasters)
+	},
+	agentsOfDisaster:function(){
+		return pickRandom(resources.naturalDisasters)+' of '+pickRandom(resources.agents)
+	},
+	toolTime:function(){
+		return pickRandom(resources.pastTenseVerbs)+' by the '+pickRandom(resources.tools)
+	},
+	toolAssistance:function(){
+		return pickRandom(resources.tools)+'-aided '+pickRandom(resources.medicalTerms)
 	}
 }
 
 var lastTemplate = 'violentMedical';
 var markovChain = {
-	violentMedical:['decayedBodyPartOperation','decayedBodyPartOperation',
-	'decayedBodyPartOperation','doubleRot','doubleRot','verbAgent','decayedPartOfTheAgent'],
-	decayedBodyPartOperation:['doubleRot','doubleRot','doubleRot','violentMedical',
-	'violentMedical','violentMedical','verbAgent','verbAgent','violentMedicalLong'],
-	doubleRot:['violentMedical','violentMedical','decayedBodyPartOperation',
-	'violentMedicalLong','violentMedicalLong','decayedBodyPartOperation',
-	'violentMedical','verbAgent','verbAgent','verbAgent','decayedPartOfTheAgent'],
-	verbAgent:['decayedBodyPartOperation','decayedBodyPartOperation',
-	'decayedBodyPartOperation','decayedBodyPartOperation','violentMedical'
-	,'violentMedical','doubleRot','doubleRot'],
-	violentMedicalLong:['decayedPartOfTheAgent','decayedPartOfTheAgent',
-	'decayedBodyPartOperation','decayedBodyPartOperation','doubleRot','doubleRot','verbAgent'],
-	decayedPartOfTheAgent:['verbAgent','verbAgent','violentMedicalLong','violentMedicalLong',
-	'violentMedical','doubleRot','decayedBodyPartOperation']
+	violentMedical:['decayedBodyPartOperation','medicalDisaster','actionsOfTheAdjective','agentsOfDisaster',
+	'decayedBodyPartOperation','decayedDisaster','toolTime','doubleRot','verbAgent','decayedPartOfTheAgent','toolAssistance'],
+	decayedBodyPartOperation:['doubleRot','violentMedicalLong','doubleRot','violentMedical','actionsOfTheAdjective',
+	'agentsOfDisaster','violentMedical','medicalDisaster','verbAgent','violentMedicalLong','decayedDisaster','toolAssistance',
+	'toolTime','toolTime','toolTime'],
+	doubleRot:['violentMedical','medicalDisaster','decayedBodyPartOperation','actionsOfTheAdjective',
+	'violentMedicalLong','violentMedicalLong','toolAssistance','decayedBodyPartOperation','agentsOfDisaster','toolTime',
+	'violentMedical','verbAgent','toolTime','decayedDisaster','verbAgent','decayedPartOfTheAgent'],
+	verbAgent:['medicalDisaster','toolTime','decayedBodyPartOperation','actionsOfTheAdjective','toolAssistance','toolAssistance',
+	'agentsOfDisaster','decayedBodyPartOperation','violentMedical','decayedDisaster','toolAssistance','violentMedical','doubleRot','doubleRot','toolTime'],
+	violentMedicalLong:['medicalDisaster','toolTime','decayedPartOfTheAgent','actionsOfTheAdjective','actionsOfTheAdjective','agentsOfDisaster',
+	'decayedBodyPartOperation','toolAssistance','toolAssistance','decayedBodyPartOperation','decayedDisaster','doubleRot','verbAgent'],
+	decayedPartOfTheAgent:['verbAgent','verbAgent','agentsOfDisaster','violentMedicalLong','medicalDisaster','toolAssistance',
+	'violentMedical','doubleRot','toolAssistance','decayedBodyPartOperation','decayedDisaster','toolTime'],
+	actionsOfTheAdjective:['doubleRot','doubleRot','doubleRot','violentMedicalLong','violentMedicalLong','violentMedicalLong',
+	'decayedBodyPartOperation','toolAssistance','decayedBodyPartOperation','decayedBodyPartOperation','decayedDisaster','medicalDisaster','agentsOfDisaster'],
+	medicalDisaster:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','actionsOfTheAdjective','toolAssistance',
+	'decayedPartOfTheAgent','violentMedicalLong','decayedDisaster','agentsOfDisaster','toolTime'],
+	decayedDisaster:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','actionsOfTheAdjective',
+	'decayedPartOfTheAgent','violentMedicalLong','medicalDisaster','agentsOfDisaster','toolTime'],
+	agentsOfDisaster:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','actionsOfTheAdjective',
+	'decayedPartOfTheAgent','violentMedicalLong','medicalDisaster','decayedDisaster','toolTime','toolAssistance','toolAssistance'],
+	toolTime:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','violentMedicalLong','decayedPartOfTheAgent',
+	'actionsOfTheAdjective','medicalDisaster','decayedDisaster','agentsOfDisaster','toolAssistance'],
+	toolAssistance:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','violentMedicalLong','decayedPartOfTheAgent',
+	'actionsOfTheAdjective','medicalDisaster','decayedDisaster','agentsOfDisaster','toolTime']
 }
 
 function postMessage(message){
@@ -66,6 +96,19 @@ function postMessage(message){
 		})
 }
 
+function updateMessage(){
+	let resource_keys = Object.keys(resources)
+	let terms = 0;
+	let version = '1.3.0'
+	resource_keys.forEach((key)=>{
+		terms += resources[key].length
+	})
+	let message = 'Update to v'+version+' - handling '+Object.keys(templates).length+' templates and '+terms+' terms'
+	postMessage(message)
+	// DEV ONLY
+	// console.log(message)
+}
+
 function pickRandom(array){
 	return array[Math.floor(Math.random()*array.length)]
 }
@@ -75,11 +118,16 @@ function createSongTitle(){
 	let title = templates[lastTemplate]()
 	//Tweet it
 	postMessage(title)
+	//DEV ONLY
+	// console.log(title)
 	//Pick a Template
 	lastTemplate = pickRandom(markovChain[lastTemplate])
 }
-createSongTitle();
-setInterval(function(){ createSongTitle()},1000*60*60)
+updateMessage();
+// setInterval(function(){ createSongTitle()},1000*60*60)
+
+//DEV ONLY
+// setInterval(function(){ createSongTitle()},1000*2)
 
 
 app.listen(process.env.PORT || 4000,()=>{
