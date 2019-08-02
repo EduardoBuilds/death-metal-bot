@@ -10,78 +10,94 @@ var client = new Twitter({
 	access_token_secret:process.env.ACCESS_SECRET,
 })
 
+//Super important helper function
+function pickRandom(array){
+	return array[Math.floor(Math.random()*array.length)]
+}
+
+//Template function definitions don't use parameters in order to maximize fungibility
 var templates = {
 	violentMedical:function(){
-		return pickRandom(resources.violentAdverbs)+' '+pickRandom(resources.medicalTerms)
+		//Example: Intense Exhumation
+		return pickRandom(resources.d.violentAdverbs)+' '+pickRandom(resources.d.medicalTerms)
 	},
 	decayedBodyPartOperation:function(){
-		return pickRandom(resources.statesOfDecay)+' '+pickRandom(resources.medicalBodyParts)+' '+pickRandom(resources.medicalTerms)
+		//Example: Twisted Bronchial Obstruction
+		return pickRandom(resources.d.statesOfDecay)+' '+pickRandom(resources.d.medicalBodyParts)+' '+pickRandom(resources.d.medicalTerms)
 	},
 	doubleRot:function(){
-		let stateA = pickRandom(resources.statesOfDecay)
-		let stateB = pickRandom(resources.statesOfDecay)
+		//The terms should be different
+		let stateA = pickRandom(resources.d.statesOfDecay)
+		let stateB = pickRandom(resources.d.statesOfDecay)
 		while (stateA === stateB){
-			stateB = pickRandom(resources.statesOfDecay)
+			stateB = pickRandom(resources.d.statesOfDecay)
 		}
 		return stateA+' and '+stateB
 	},
 	verbAgent:function(){
-		return pickRandom(resources.pastTenseVerbs)+' by '+pickRandom(resources.agents)
+		//Example: Decimated by Leprous Crowds
+		return pickRandom(resources.d.pastTenseVerbs)+' by '+pickRandom(resources.d.agents)
 	},
 	actionsOfTheAdjective:function(){
-		return pickRandom(resources.metalSoundingVerbs)+ ' of the '+pickRandom(resources.adjectives)
+		//Example: Corruption of the Bloated
+		return pickRandom(resources.d.metalSoundingVerbs)+ ' of the '+pickRandom(resources.d.adjectives)
 	},
 	decayedPartOfTheAgent:function(){
-		return pickRandom(resources.statesOfDecay)+' '+pickRandom(resources.pluralBodyParts)+' of the '+pickRandom(resources.agents)
+		//Exmaple: Fetid Blood of the Undead Hordes
+		return pickRandom(resources.d.statesOfDecay)+' '+pickRandom(resources.d.pluralBodyParts)+' of the '+pickRandom(resources.d.agents)
 	},
 	violentMedicalLong:function(){
-		return pickRandom(resources.violentAdverbs)+' '+pickRandom(resources.medicalTerms)+' of the '+pickRandom(resources.adjectives)
+		//Example: Compulsive Lobotomy of the Rotten
+		return pickRandom(resources.d.violentAdverbs)+' '+pickRandom(resources.d.medicalTerms)+' of the '+pickRandom(resources.d.adjectives)
 	},
 	medicalDisaster:function(){
-		return pickRandom(resources.medicalTerms)+' '+pickRandom(resources.naturalDisasters)
+		//Example: Excision Cataclysm
+		return pickRandom(resources.d.medicalTerms)+' '+pickRandom(resources.d.naturalDisasters)
 	},
 	decayedDisaster:function(){
-		return pickRandom(resources.statesOfDecay)+' '+pickRandom(resources.naturalDisasters)
+		//Example: Rotted Eruption
+		return pickRandom(resources.d.statesOfDecay)+' '+pickRandom(resources.d.naturalDisasters)
 	},
 	agentsOfDisaster:function(){
-		return pickRandom(resources.naturalDisasters)+' of '+pickRandom(resources.agents)
+		//Example: Avalanche of Worms
+		return pickRandom(resources.d.naturalDisasters)+' of '+pickRandom(resources.d.agents)
 	},
 	toolTime:function(){
-		return pickRandom(resources.pastTenseVerbs)+' by the '+pickRandom(resources.tools)
+		//Example: Devoured by the Icepick
+		return pickRandom(resources.d.pastTenseVerbs)+' by the '+pickRandom(resources.d.tools)
 	},
 	toolAssistance:function(){
-		return pickRandom(resources.tools)+'-aided '+pickRandom(resources.medicalTerms)
+		//Example: Bandsaw-aided Tracheal Vivisection
+		return pickRandom(resources.d.tools)+'-aided '+pickRandom(resources.d.medicalBodyParts)+' '+pickRandom(resources.d.medicalTerms)
+	},
+	violentPolitics:function(){
+		//Example: Demented Autocracy of the Dead
+		return pickRandom(resources.d.violentAdverbs)+' '+pickRandom(resources.d.political)+' of the '+pickRandom(resources.d.adjectives) 
+	},
+	visceraLocation:function(){
+		//Example: Bog of Eyes
+		return pickRandom(resources.d.locations)+' of '+pickRandom(resources.d.pluralBodyParts)
+	},
+	metalBuildings:function(){
+		//Example: Pinnacle of Splayed Worms
+		return pickRandom(resources.d.buildings)+' of '+pickRandom(resources.d.statesOfDecay)+' '+pickRandom(resources.d.agents)
+	},
+	villain:function(){
+		//Example: Tyrant of the Wailing Bastion
+		return pickRandom(resources.d.titles)+' of the '+pickRandom(resources.d.wildCardAdjectives)+' '+pickRandom(resources.d.buildings)
+	},
+	politicalImagery:function(){
+		//Example: Coercion in the Darksome Gate of the Tortured
+		return pickRandom(resources.d.political)+' in the '+pickRandom(resources.d.wildCardAdjectives)+' '+pickRandom(resources.d.buildings)+' of the '+pickRandom(resources.d.adjectives)
+	},
+	simpleVillain:function(){
+		//Example: Soul Tyrant
+		return pickRandom(resources.d.singularBodyParts)+' '+pickRandom(resources.d.titles)
+	},
+	metalLocation:function(){
+		//Example: Swamp of Perfidy
+		return pickRandom(resources.d.locations)+' of '+pickRandom(resources.d.metalSoundingVerbs)
 	}
-}
-
-var lastTemplate = 'violentMedical';
-var markovChain = {
-	violentMedical:['decayedBodyPartOperation','medicalDisaster','actionsOfTheAdjective','agentsOfDisaster',
-	'decayedBodyPartOperation','decayedDisaster','toolTime','doubleRot','verbAgent','decayedPartOfTheAgent','toolAssistance'],
-	decayedBodyPartOperation:['doubleRot','violentMedicalLong','doubleRot','violentMedical','actionsOfTheAdjective',
-	'agentsOfDisaster','violentMedical','medicalDisaster','verbAgent','violentMedicalLong','decayedDisaster','toolAssistance',
-	'toolTime','toolTime','toolTime'],
-	doubleRot:['violentMedical','medicalDisaster','decayedBodyPartOperation','actionsOfTheAdjective',
-	'violentMedicalLong','violentMedicalLong','toolAssistance','decayedBodyPartOperation','agentsOfDisaster','toolTime',
-	'violentMedical','verbAgent','toolTime','decayedDisaster','verbAgent','decayedPartOfTheAgent'],
-	verbAgent:['medicalDisaster','toolTime','decayedBodyPartOperation','actionsOfTheAdjective','toolAssistance','toolAssistance',
-	'agentsOfDisaster','decayedBodyPartOperation','violentMedical','decayedDisaster','toolAssistance','violentMedical','doubleRot','doubleRot','toolTime'],
-	violentMedicalLong:['medicalDisaster','toolTime','decayedPartOfTheAgent','actionsOfTheAdjective','actionsOfTheAdjective','agentsOfDisaster',
-	'decayedBodyPartOperation','toolAssistance','toolAssistance','decayedBodyPartOperation','decayedDisaster','doubleRot','verbAgent'],
-	decayedPartOfTheAgent:['verbAgent','verbAgent','agentsOfDisaster','violentMedicalLong','medicalDisaster','toolAssistance',
-	'violentMedical','doubleRot','toolAssistance','decayedBodyPartOperation','decayedDisaster','toolTime'],
-	actionsOfTheAdjective:['doubleRot','doubleRot','doubleRot','violentMedicalLong','violentMedicalLong','violentMedicalLong',
-	'decayedBodyPartOperation','toolAssistance','decayedBodyPartOperation','decayedBodyPartOperation','decayedDisaster','medicalDisaster','agentsOfDisaster'],
-	medicalDisaster:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','actionsOfTheAdjective','toolAssistance',
-	'decayedPartOfTheAgent','violentMedicalLong','decayedDisaster','agentsOfDisaster','toolTime'],
-	decayedDisaster:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','actionsOfTheAdjective',
-	'decayedPartOfTheAgent','violentMedicalLong','medicalDisaster','agentsOfDisaster','toolTime'],
-	agentsOfDisaster:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','actionsOfTheAdjective',
-	'decayedPartOfTheAgent','violentMedicalLong','medicalDisaster','decayedDisaster','toolTime','toolAssistance','toolAssistance'],
-	toolTime:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','violentMedicalLong','decayedPartOfTheAgent',
-	'actionsOfTheAdjective','medicalDisaster','decayedDisaster','agentsOfDisaster','toolAssistance'],
-	toolAssistance:['violentMedical','decayedBodyPartOperation','doubleRot','verbAgent','violentMedicalLong','decayedPartOfTheAgent',
-	'actionsOfTheAdjective','medicalDisaster','decayedDisaster','agentsOfDisaster','toolTime']
 }
 
 function postMessage(message){
@@ -97,39 +113,65 @@ function postMessage(message){
 }
 
 function updateMessage(){
-	let resource_keys = Object.keys(resources)
+	let resource_keys = Object.keys(resources.d)
 	let terms = 0;
-	let version = '1.3.0'
+	let version = '2.0.0' // This is super loose and doesn't follow any kind of conventions
+	//Count the total number of terms used in every dictionary in resources
 	resource_keys.forEach((key)=>{
-		terms += resources[key].length
+		terms += resources.d[key].length
 	})
 	let message = 'Update to v'+version+' - handling '+Object.keys(templates).length+' templates and '+terms+' terms'
-	postMessage(message)
-	// DEV ONLY
-	// console.log(message)
-}
-
-function pickRandom(array){
-	return array[Math.floor(Math.random()*array.length)]
+	if (process.env.ENV === 'dev'){
+		//in dev we don't post publicly
+		console.log(message)
+	}  else if (process.env.ENV === 'prd'){
+		postMessage(message)
+	}
 }
 
 function createSongTitle(){
 	//Fill the template
 	let title = templates[lastTemplate]()
-	//Tweet it
-	postMessage(title)
-	//DEV ONLY
-	// console.log(title)
-	//Pick a Template
-	lastTemplate = pickRandom(markovChain[lastTemplate])
+	if (process.env.ENV === 'dev'){
+		//Log the message and the template it came from for analysis
+		console.log(lastTemplate+': '+title)
+	} else if(process.env.ENV === 'prd'){
+		//Tweet it
+		postMessage(title)
+	}
+	//Pick a new Template
+	let templateOptions = [];
+	let t = Object.keys(resources.mc[lastTemplate])
+	for (let i = 0; i < t.length; i++){
+		for (let j = 0; j < resources.mc[lastTemplate][t[i]]; j++){
+			templateOptions.push(t[i])
+		}
+	}
+	//Uncomment the next line for option monitoring
+	console.log(templateOptions)
+	lastTemplate = pickRandom(templateOptions)
 }
+
+function setup(){
+	//Set up the initial parameters
+	let ts = Object.keys(templates)
+	lastTemplate = pickRandom(ts)
+}
+
+//Main code execution
+var lastTemplate = '';
+setup()
 updateMessage();
-setInterval(function(){ createSongTitle()},1000*60*60)
+if (process.env.ENV === 'prd'){
+	//We publish tweets every hour
+	setInterval(function(){ createSongTitle()},1000*60*60)
+} else if (process.env.ENV === 'dev'){
+	//In DEV we want to monitor lots of combinations, so log quickly.
+	setInterval(function(){ createSongTitle()},500)
+}
 
-//DEV ONLY
-// setInterval(function(){ createSongTitle()},1000*2)
 
-
+//Basic server to keep process running in Cloud Foundry
 app.listen(process.env.PORT || 4000,()=>{
 	console.log('Working')
 })

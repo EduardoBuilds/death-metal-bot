@@ -1,16 +1,202 @@
+/*
+These dictionaries are the building blocks of everything.
+Adding categories gives more flexibility and words can be repeated throughout 
+the different categories but it's helpful if you can reuse the same category more than once.
+*/
 var dictionaries = {
-	medicalTerms:['Excision','Surgery','Autopsy','Amputation','Vivisection','Obstruction','Mutilation','Trauma','Exhumation','Revascularization','Lobotomy','Ablation','Butchery'],
+	medicalTerms:['Excision','Surgery','Evisceration','Autopsy','Amputation','Vivisection','Obstruction','Mutilation','Trauma','Exhumation','Revascularization','Lobotomy','Ablation','Butchery'],
 	metalSoundingVerbs:['Desecration','Profanation','Heresy','Subjugation','Dissidence','Impalement','Betrayal','Perfidy','Dishonesty','Duplicity','Treason','Corruption'],
-	violentAdverbs:['Forceful','Violent','Frenetic','Fascinated','Frenzied','Insistent','Obsessive','Delirious','Rabid','Morbid','Demented','Aggressive','Intense'],
-	singularBodyParts:['Gut','Eye','Intestine','Stomach','Lung','Heart','Brain','Mouth','Tongue','Liver','Kidney','Bladder','Trachea','Limb','Colon','Bowel'],
-	pluralBodyParts:['Guts','Eyes','Lungs','Teeth','Limbs','Bowels','Kidneys','Brains'],
+	violentAdverbs:['Forceful','Violent','Frenetic','Fascinated','Frenzied','Insistent','Obsessive','Delirious','Rabid','Morbid','Demented','Aggressive','Intense','Compulsive'],
+	singularBodyParts:['Gut','Eye','Brain','Blood','Soul','Spirit'],
+	pluralBodyParts:['Guts','Eyes','Fangs','Bowels','Brains','Blood','Ichor'],
 	medicalBodyParts:['Occular','Intestinal','Cardiac','Tracheal','Bronchial','Colonic','Urinary'],
 	statesOfDecay:['Contaminated','Septic','Rotted','Fermented','Decayed','Splayed','Twisted','Necrotized','Infected','Bloated','Putrefied','Fetid','Diseased','Defiled','Blighted','Tainted','Blistered','Burst','Flatulent','Grotesque'],
 	agents:['Vermin','Parasites','Rats','Worms','Maggots','Serpents','Leprous Crowds','Larvae','Roaches','Scorpions','Undead Hordes'],
+	titles:['Crusher','Destroyer','Heretic','Ruler','Desecrator','Annihilator','Corruptor','Tyrant','Monarch','Emperor','Colossus','Defiler','Despoiler','Inquisitor','Nemesis','Impaler','Prophet'],
 	pastTenseVerbs:['Devoured','Consumed','Obsessed','Destroyed','Pulverized','Mutilated','Maimed','Massacred','Eaten','Annihilated','Crushed','Obliterated','Decimated'],
-	adjectives:['Infirm','Feeble','Decapitated','Mutilated','Diseased','Corrupt','Dead','Defiled','Innocent','Pure','Unwilling','Bloated','Rotten','Tortured'],
-	naturalDisasters:['Earthquake','Tornado','Hurricane','Volcano','Blizzard','Storm','Erosion','Cataclysm','Apocalypse','Avalanche','Eruption','Tsunami','Flood'],
-	tools:['Laser','Hammer','Tenderizer','Icepick','Vice Grip','Wrench','Jackhammer','Peeler','Cleaver']
+	adjectives:['Infirm','Feeble','Decapitated','Mutilated','Diseased','Corrupt','Dead','Defiled','Unwilling','Bloated','Rotten','Tortured'],
+	naturalDisasters:['Earthquake','Tornado','Hurricane','Volcano','Blizzard','Storm','Monsoon','Cataclysm','Apocalypse','Avalanche','Eruption','Tsunami','Flood','Disaster','Massacre'],
+	tools:['Laser','Hammer','Icepick','Vice Grip','Wrench','Jackhammer','Cleaver','Bandsaw','Chainsaw','Drill'],
+	wildCardAdjectives:['Dark','Flaming','Somber','Dying','Wretched','Fading','Wailing','Nameless','Hideous','Blasphemous','Accursed','Loathsome','Darksome','Decadent','Eldritch','Tenebrous','Forlorn'],
+	locations:['Mountain','Cliff','River','Cascade','Swamp','Mire','Bog','Precipice','Mound','Ocean'],
+	buildings:['Fortress','Tower','City','Kingdom','Necropolis','Spire','Pinnacle','Bastion','Bulwark','Gallows','Asylum','Tomb','Catacombs','Cathedral','Gate','Chamber'],
+	political:['Indoctrination','Brainwashing','Propaganda','Lies','Tyranny','Dictatorship','Autocracy','Subjugation','Inquisition','Oppression','Coercion','Necrocracy']
 }
 
-module.exports = dictionaries
+/*
+The numbers in the Markov Chains indicate how often to replicate them in an array of options
+So for agentsOfDisaster, the system would create this array:
+[
+	'violentMedical','violentMedical','decayedBodyPartOperation',
+	'decayedBodyPartOperation','doubleRot','doubleRot',
+	'verbAgent','actionsOfTheAdjective','actionsOfTheAdjective',
+	'decayedPartOfTheAgent','violentMedicalLong','violentMedicalLong',
+	'medicalDisaster','decayedDisaster','toolTime',
+	'toolTime','toolAssistance','toolAssistance',
+	'violentPolitics','violentPolitics','visceraLocation',
+	'visceraLocation','metalBuildings','metalBuildings',
+	'villain','villain','politicalImagery',
+	'politicalImagery','simpleVillain','simpleVillain',
+	'metalLocation','metalLocation'
+]
+and then pick a random name from that array.
+*/
+var markovChain = {
+	agentsOfDisaster:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
+		'violentMedicalLong':2,'medicalDisaster':1,'decayedDisaster':1,
+		'agentsOfDisaster':0,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	violentMedical:{
+		'violentMedical':0,'decayedBodyPartOperation':1,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':1,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	decayedBodyPartOperation:{
+		'violentMedical':1,'decayedBodyPartOperation':0,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':1,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	doubleRot:{
+		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':0,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':1,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':1,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	verbAgent:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':0,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':1,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	violentMedicalLong:{
+		'violentMedical':1,'decayedBodyPartOperation':1,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':0,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':1,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	decayedPartOfTheAgent:{
+		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
+		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':0,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	actionsOfTheAdjective:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':1,'actionsOfTheAdjective':0,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':1,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':1,'simpleVillain':2,'metalLocation':1
+	},
+	medicalDisaster:{
+		'violentMedical':1,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':1,'medicalDisaster':0,'decayedDisaster':1,
+		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':1,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	decayedDisaster:{
+		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':0,
+		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	toolTime:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':0,'toolAssistance':1,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	toolAssistance:{
+		'violentMedical':1,'decayedBodyPartOperation':1,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':2,'medicalDisaster':1,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':1,'toolAssistance':0,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	violentPolitics:{
+		'violentMedical':1,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':0,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':1,'simpleVillain':2,'metalLocation':2
+	},
+	visceraLocation:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
+		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':0,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':1
+	},
+	metalBuildings:{
+		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
+		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':1,
+		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':0,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	villain:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':0,'politicalImagery':2,'simpleVillain':2,'metalLocation':2
+	},
+	politicalImagery:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':1,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':1,'visceraLocation':2,'metalBuildings':2,
+		'villain':1,'politicalImagery':0,'simpleVillain':2,'metalLocation':2
+	},
+	simpleVillain:{
+		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
+		'villain':1,'politicalImagery':2,'simpleVillain':0,'metalLocation':2
+	},
+	metalLocation:{
+		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':1,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':2,'visceraLocation':1,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':0
+	}
+
+}
+
+
+
+module.exports = {d:dictionaries,mc:markovChain}
