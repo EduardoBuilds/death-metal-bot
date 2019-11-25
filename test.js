@@ -4,6 +4,6 @@ function pickRandom(array){
 }
 
 function TestTemplate(){
-	console.log(pickRandom(resources.naturalDisasters)+' of '+pickRandom(resources.agents))
+	console.log(pickRandom(resources.d.statesOfDecay)+' '+pickRandom(resources.d.pluralBodyParts)+' of the '+pickRandom(resources.d.agents))
 }
-setInterval(()=>TestTemplate(),1000*2)
+setInterval(()=>TestTemplate(),500)

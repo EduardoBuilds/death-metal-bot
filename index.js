@@ -26,6 +26,7 @@ var templates = {
 		return pickRandom(resources.d.statesOfDecay)+' '+pickRandom(resources.d.medicalBodyParts)+' '+pickRandom(resources.d.medicalTerms)
 	},
 	doubleRot:function(){
+		//Example: 
 		//The terms should be different
 		let stateA = pickRandom(resources.d.statesOfDecay)
 		let stateB = pickRandom(resources.d.statesOfDecay)
@@ -35,7 +36,7 @@ var templates = {
 		return stateA+' and '+stateB
 	},
 	verbAgent:function(){
-		//Example: Decimated by Leprous Crowds
+		//Example: Decimated by Undead Hordes
 		return pickRandom(resources.d.pastTenseVerbs)+' by '+pickRandom(resources.d.agents)
 	},
 	actionsOfTheAdjective:function(){
@@ -97,6 +98,18 @@ var templates = {
 	metalLocation:function(){
 		//Example: Swamp of Perfidy
 		return pickRandom(resources.d.locations)+' of '+pickRandom(resources.d.metalSoundingVerbs)
+	},
+	rebel:function(){
+		//Example: Overthrow the Tyrant!
+		return pickRandom(resources.d.order)+' the '+pickRandom(resources.d.titles)+'!';
+	},
+	badMagic:function(){
+		//Example: Grotesque Witchcraft
+		return pickRandom(resources.d.statesOfDecay)+' '+pickRandom(resources.d.magic);
+	},
+	radMagic:function(){
+		//Example: Chant of Desecration
+		return pickRandom(resources.d.magic)+' of '+pickRandom(resources.d.metalSoundingVerbs);
 	}
 }
 
@@ -115,7 +128,7 @@ function postMessage(message){
 function updateMessage(){
 	let resource_keys = Object.keys(resources.d)
 	let terms = 0;
-	let version = '2.0.0' // This is super loose and doesn't follow any kind of conventions
+	let version = '2.0.5' // This is super loose and doesn't follow any kind of conventions
 	//Count the total number of terms used in every dictionary in resources
 	resource_keys.forEach((key)=>{
 		terms += resources.d[key].length
@@ -148,7 +161,7 @@ function createSongTitle(){
 		}
 	}
 	//Uncomment the next line for option monitoring
-	console.log(templateOptions)
+	// console.log(templateOptions)
 	lastTemplate = pickRandom(templateOptions)
 }
 

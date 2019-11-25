@@ -3,3 +3,9 @@ applications:
 - name: death-metal-bot
   memory: 256M
   instances: 1
+  env:
+    CONSUMER_KEY: fpAzga1Yg4lPzgoMAX3AxPu36
+    CONSUMER_SECRET: Hk6llNhMILISf8mB96TYkzsF1TVWm5SeJqs7ltdL00SC0K1adS
+    ACCESS_TOKEN: 1129501250486177793-Y6ONRDzkhyIwrz2DhOronhl1tzSuqb
+    ACCESS_SECRET: HJ4Xpdbkxzm52mYkn6XRLuWgGuoPA382UPzvC1snnS6sc
+    ENV: prd
