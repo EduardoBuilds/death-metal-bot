@@ -110,6 +110,10 @@ var templates = {
 	radMagic:function(){
 		//Example: Chant of Desecration
 		return pickRandom(resources.d.magic)+' of '+pickRandom(resources.d.metalSoundingVerbs);
+	},
+	adjFear:function(){
+		//Example: Somber Horror
+		return pickRandom(resources.d.wildCardAdjectives)+' '+pickRandom(resources.d.fears)
 	}
 }
 
@@ -128,7 +132,7 @@ function postMessage(message){
 function updateMessage(){
 	let resource_keys = Object.keys(resources.d)
 	let terms = 0;
-	let version = '2.0.5' // This is super loose and doesn't follow any kind of conventions
+	let version = '2.1.0' // This is super loose and doesn't follow any kind of conventions
 	//Count the total number of terms used in every dictionary in resources
 	resource_keys.forEach((key)=>{
 		terms += resources.d[key].length
