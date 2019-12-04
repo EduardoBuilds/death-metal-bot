@@ -9,7 +9,7 @@ var dictionaries = {
 	violentAdverbs:['Forceful','Violent','Frenetic','Fascinated','Frenzied','Insistent','Obsessive','Delirious','Rabid','Morbid','Demented','Aggressive','Intense','Compulsive','Mindless'],
 	singularBodyParts:['Gut','Eye','Brain','Blood','Soul','Spirit','Flesh'],
 	fears:['Vertigo','Anxiety','Panic','Despair','Fear','Terror','Horror','Disquiet','Unease','Consternation','Hazard'],
-	pluralBodyParts:['Guts','Eyes','Fangs','Bowels','Brains','Blood','Ichor','Flesh'],
+	pluralBodyParts:['Guts','Eyes','Fangs','Bowels','Brains','Blood','Ichor','Flesh','Venom'],
 	medicalBodyParts:['Occular','Intestinal','Cardiac','Tracheal','Bronchial','Colonic','Urinary'],
 	statesOfDecay:['Contaminated','Septic','Rotted','Fermented','Decayed','Splayed','Twisted','Necrotized','Infected','Bloated','Putrefied','Fetid','Diseased','Defiled','Blighted','Tainted','Blistered','Burst','Flatulent','Grotesque'],
 	agents:['Vermin','Parasites','Rats','Worms','Maggots','Serpents','Leprous Crowds','Larvae','Roaches','Scorpions','Undead Hordes','Crows','Ghouls','Beasts','Martyrs','Carcasses','Cadavers'],
@@ -20,7 +20,7 @@ var dictionaries = {
 	tools:['Laser','Hammer','Icepick','Vice Grip','Wrench','Jackhammer','Cleaver','Bandsaw','Chainsaw','Drill'],
 	wildCardAdjectives:['Dark','Flaming','Somber','Dying','Wretched','Fading','Wailing','Nameless','Hideous','Blasphemous','Accursed','Loathsome','Darksome','Decadent','Eldritch','Tenebrous','Forlorn','Dread'],
 	locations:['Mountain','Cliff','River','Cascade','Swamp','Mire','Bog','Precipice','Mound','Ocean','Marsh','Morass','Abyss','Peak'],
-	buildings:['Fortress','Tower','City','Kingdom','Necropolis','Spire','Pinnacle','Bastion','Bulwark','Gallows','Asylum','Tomb','Catacombs','Cathedral','Gate','Chamber'],
+	buildings:['Fortress','Tower','City','Kingdom','Necropolis','Spire','Pinnacle','Bastion','Bulwark','Gallows','Asylum','Tomb','Catacombs','Cathedral','Gate','Chamber','Prison'],
 	political:['Indoctrination','Brainwashing','Propaganda','Lies','Tyranny','Dictatorship','Autocracy','Subjugation','Inquisition','Oppression','Coercion','Necromancy'],
 	magic:['Sorcery','Necromancy','Witchcraft','Blasphemy','Invocations','Summoning','Covenant','Pact','Sacrilege','Sortilege','Hymn','Conjuration','Chant'],
 	order:['Dethrone','Unseat','Oust','Depose','Overthrow','Dislodge','Usurp','Betray','Evict']
