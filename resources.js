@@ -4,11 +4,11 @@ Adding categories gives more flexibility and words can be repeated throughout
 the different categories but it's helpful if you can reuse the same category more than once.
 */
 var dictionaries = {
-	medicalTerms:['Excision','Surgery','Evisceration','Autopsy','Amputation','Vivisection','Obstruction','Mutilation','Trauma','Exhumation','Revascularization','Lobotomy','Ablation','Butchery'],
+	medicalTerms:['Excision','Surgery','Evisceration','Autopsy','Amputation','Vivisection','Obstruction','Mutilation','Trauma','Exhumation','Revascularization','Lobotomy','Ablation','Butchery','Malpractice'],
 	metalSoundingVerbs:['Desecration','Profanation','Heresy','Subjugation','Dissidence','Impalement','Betrayal','Perfidy','Dishonesty','Duplicity','Treason','Corruption','Violence','Strangulation','Asphyxiation'],
 	violentAdverbs:['Forceful','Violent','Frenetic','Fascinated','Frenzied','Insistent','Obsessive','Delirious','Rabid','Morbid','Demented','Aggressive','Intense','Compulsive','Mindless'],
 	singularBodyParts:['Gut','Eye','Brain','Blood','Soul','Spirit','Flesh'],
-	fears:['Vertigo','Anxiety','Panic','Despair','Fear','Terror','Horror','Disquiet','Unease','Consternation','Hazard'],
+	fears:['Vertigo','Anxiety','Panic','Despair','Fear','Terror','Horror','Disquiet','Unease','Consternation','Hazard','Torment'],
 	pluralBodyParts:['Guts','Eyes','Fangs','Bowels','Brains','Blood','Ichor','Flesh','Venom'],
 	medicalBodyParts:['Occular','Intestinal','Cardiac','Tracheal','Bronchial','Colonic','Urinary'],
 	statesOfDecay:['Contaminated','Septic','Rotted','Fermented','Decayed','Splayed','Twisted','Necrotized','Infected','Bloated','Putrefied','Fetid','Diseased','Defiled','Blighted','Tainted','Blistered','Burst','Flatulent','Grotesque'],
@@ -18,7 +18,7 @@ var dictionaries = {
 	adjectives:['Infirm','Feeble','Decapitated','Mutilated','Diseased','Corrupt','Dead','Defiled','Unwilling','Bloated','Rotten','Tortured','Unholy'],
 	naturalDisasters:['Earthquake','Tornado','Hurricane','Volcano','Blizzard','Storm','Monsoon','Cataclysm','Apocalypse','Avalanche','Eruption','Tsunami','Flood','Disaster','Massacre'],
 	tools:['Laser','Hammer','Icepick','Vice Grip','Wrench','Jackhammer','Cleaver','Bandsaw','Chainsaw','Drill'],
-	wildCardAdjectives:['Dark','Flaming','Somber','Dying','Wretched','Fading','Wailing','Nameless','Hideous','Blasphemous','Accursed','Loathsome','Darksome','Decadent','Eldritch','Tenebrous','Forlorn','Dread'],
+	wildCardAdjectives:['Dark','Flaming','Somber','Dying','Wretched','Fading','Wailing','Nameless','Hideous','Blasphemous','Accursed','Loathsome','Darksome','Decadent','Eldritch','Tenebrous','Forlorn','Dread','Abysmal'],
 	locations:['Mountain','Cliff','River','Cascade','Swamp','Mire','Bog','Precipice','Mound','Ocean','Marsh','Morass','Abyss','Peak'],
 	buildings:['Fortress','Tower','City','Kingdom','Necropolis','Spire','Pinnacle','Bastion','Bulwark','Gallows','Asylum','Tomb','Catacombs','Cathedral','Gate','Chamber','Prison'],
 	political:['Indoctrination','Brainwashing','Propaganda','Lies','Tyranny','Dictatorship','Autocracy','Subjugation','Inquisition','Oppression','Coercion','Necromancy'],
