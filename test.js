@@ -4,6 +4,6 @@ function pickRandom(array){
 }
 
 function TestTemplate(){
-	console.log(pickRandom(resources.d.wildCardAdjectives)+' '+pickRandom(resources.d.fears))
+	console.log(pickRandom(resources.d.violentAdverbs)+' '+pickRandom(resources.d.political)+' of the '+pickRandom(resources.d.adjectives) )
 }
 setInterval(()=>TestTemplate(),500)
