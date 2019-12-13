@@ -5,25 +5,26 @@ the different categories but it's helpful if you can reuse the same category mor
 */
 var dictionaries = {
 	medicalTerms:['Excision','Surgery','Evisceration','Autopsy','Amputation','Vivisection','Obstruction','Mutilation','Trauma','Exhumation','Revascularization','Lobotomy','Ablation','Butchery','Malpractice','Dissection'],
-	metalSoundingVerbs:['Desecration','Profanation','Heresy','Subjugation','Dissidence','Impalement','Betrayal','Perfidy','Dishonesty','Duplicity','Treason','Corruption','Violence','Strangulation','Asphyxiation','Brutality','Savagery','Cruelty'],
-	violentAdverbs:['Forceful','Violent','Frenetic','Fascinated','Frenzied','Insistent','Obsessive','Delirious','Rabid','Morbid','Demented','Aggressive','Intense','Compulsive','Mindless','Brutal','Savage','Cruel','Vicious','Callous','Merciless','Bestial','Vile','Inhuman'],
+	metalSoundingVerbs:['Desecration','Profanation','Heresy','Subjugation','Dissidence','Impalement','Betrayal','Perfidy','Dishonesty','Duplicity','Treason','Corruption','Violence','Strangulation','Asphyxiation','Brutality','Savagery','Cruelty','Slaying','Decadence'],
+	violentAdverbs:['Forceful','Violent','Frenetic','Frenzied','Insistent','Obsessive','Delirious','Rabid','Morbid','Demented','Aggressive','Intense','Compulsive','Mindless','Brutal','Savage','Cruel','Vicious','Callous','Merciless','Bestial','Vile','Inhuman'],
+	shockBois:['Striking','Fascinating','Mesmerizing','Hypnotic','Overwhelming','Entrancing','Shocking','Appalling','Horrific','Atrocious','Disgraceful','Repugnant','Unspeakable','Abhorrent','Sickening','Unsettling'],
 	singularBodyParts:['Gut','Eye','Brain','Blood','Soul','Spirit','Flesh'],
 	fears:['Vertigo','Anxiety','Panic','Despair','Fear','Terror','Horror','Disquiet','Unease','Consternation','Hazard','Torment','Evil'],
 	pluralBodyParts:['Guts','Eyes','Fangs','Bowels','Brains','Blood','Ichor','Flesh','Venom','Bile','Vomit'],
-	medicalBodyParts:['Occular','Intestinal','Cardiac','Tracheal','Bronchial','Colonic','Urinary'],
-	statesOfDecay:['Contaminated','Septic','Rotted','Fermented','Decayed','Splayed','Twisted','Necrotized','Infected','Bloated','Putrefied','Fetid','Diseased','Defiled','Blighted','Tainted','Blistered','Burst','Flatulent','Grotesque'],
-	agents:['Vermin','Parasites','Rats','Worms','Maggots','Serpents','Leprous Crowds','Larvae','Roaches','Scorpions','Undead Hordes','Crows','Ghouls','Beasts','Martyrs','Carcasses','Cadavers'],
-	titles:['Crusher','Destroyer','Heretic','Ruler','Desecrator','Annihilator','Corruptor','Tyrant','Monarch','Emperor','Colossus','Defiler','Despoiler','Inquisitor','Nemesis','Impaler','Prophet'],
+	medicalBodyParts:['Occular','Intestinal','Cardiac','Tracheal','Bronchial','Colonic','Urinary','Abdominal'],
+	statesOfDecay:['Contaminated','Septic','Rotted','Fermented','Decayed','Splayed','Twisted','Necrotized','Infected','Bloated','Putrefied','Fetid','Diseased','Defiled','Blighted','Tainted','Blistered','Burst','Flatulent','Grotesque','Deformed','Distorted','Infested'],
+	agents:['Vermin','Parasites','Rats','Worms','Maggots','Serpents','Leprous Crowds','Larvae','Roaches','Scorpions','Undead Hordes','Crows','Ghouls','Beasts','Carcasses','Cadavers','Corpses'],
+	titles:['Crusher','Destroyer','Heretic','Ruler','Desecrator','Annihilator','Corruptor','Tyrant','Monarch','Emperor','Colossus','Defiler','Despoiler','Inquisitor','Nemesis','Impaler','Prophet','Slayer'],
 	pastTenseVerbs:['Devoured','Consumed','Obsessed','Destroyed','Pulverized','Mutilated','Maimed','Massacred','Eaten','Annihilated','Crushed','Obliterated','Decimated'],
 	adjectives:['Infirm','Feeble','Decapitated','Mutilated','Diseased','Corrupt','Dead','Defiled','Unwilling','Bloated','Rotten','Tortured','Unholy'],
-	naturalDisasters:['Earthquake','Tornado','Hurricane','Volcano','Blizzard','Storm','Monsoon','Cataclysm','Apocalypse','Avalanche','Eruption','Tsunami','Flood','Disaster','Massacre'],
-	tools:['Laser','Hammer','Icepick','Vice Grip','Wrench','Jackhammer','Cleaver','Bandsaw','Chainsaw','Drill'],
-	wildCardAdjectives:['Dark','Flaming','Somber','Dying','Wretched','Fading','Wailing','Nameless','Hideous','Blasphemous','Accursed','Loathsome','Darksome','Decadent','Eldritch','Tenebrous','Forlorn','Dread','Abysmal'],
+	naturalDisasters:['Earthquake','Tornado','Hurricane','Volcano','Blizzard','Storm','Monsoon','Cataclysm','Apocalypse','Avalanche','Eruption','Tsunami','Flood','Disaster','Massacre','Infestation','Epidemic'],
+	tools:['Laser','Hammer','Icepick','Vice Grip','Wrench','Jackhammer','Cleaver','Bandsaw','Chainsaw','Drill','Guillotine'],
+	wildCardAdjectives:['Dark','Flaming','Somber','Dying','Wretched','Fading','Wailing','Nameless','Hideous','Blasphemous','Accursed','Loathsome','Darksome','Decadent','Eldritch','Tenebrous','Forlorn','Dread','Abysmal','Menacing'],
 	locations:['Mountain','Cliff','River','Cascade','Swamp','Mire','Bog','Precipice','Mound','Ocean','Marsh','Morass','Abyss','Peak'],
 	buildings:['Fortress','Tower','City','Kingdom','Necropolis','Spire','Pinnacle','Bastion','Bulwark','Gallows','Asylum','Tomb','Catacombs','Cathedral','Gate','Chamber','Prison'],
 	political:['Indoctrination','Brainwashing','Propaganda','Lies','Tyranny','Dictatorship','Autocracy','Subjugation','Inquisition','Oppression','Coercion','Necromancy'],
 	magic:['Sorcery','Necromancy','Witchcraft','Blasphemy','Invocations','Summoning','Covenant','Pact','Sacrilege','Sortilege','Hymn','Conjuration','Chant'],
-	order:['Dethrone','Unseat','Oust','Depose','Overthrow','Dislodge','Usurp','Betray','Evict']
+	order:['Dethrone','Unseat','Oust','Depose','Overthrow','Dislodge','Usurp','Betray','Evict','Eat']
 }
 
 /*
@@ -49,209 +50,209 @@ var markovChain = {
 	agentsOfDisaster:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
-		'violentMedicalLong':2,'medicalDisaster':1,'decayedDisaster':1,
+		'violentMedicalLong':2,'decayedDisaster':1,
 		'agentsOfDisaster':0,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	violentMedical:{
 		'violentMedical':0,'decayedBodyPartOperation':1,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':1,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':1,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	decayedBodyPartOperation:{
 		'violentMedical':1,'decayedBodyPartOperation':0,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':1,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':1,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	doubleRot:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':0,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':1,
+		'violentMedicalLong':2,'decayedDisaster':1,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':1,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	verbAgent:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':0,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':1,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	violentMedicalLong:{
 		'violentMedical':1,'decayedBodyPartOperation':1,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':0,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':0,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':1,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	decayedPartOfTheAgent:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
 		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':0,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	actionsOfTheAdjective:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':1,'actionsOfTheAdjective':0,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':1,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':1,'simpleVillain':2,'metalLocation':1,
-		'rebel':2,'badMagic':2,'radMagic':1,'adjFear':2
-	},
-	medicalDisaster:{
-		'violentMedical':1,'decayedBodyPartOperation':2,'doubleRot':2,
-		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':1,'medicalDisaster':0,'decayedDisaster':1,
-		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':1,
-		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
-		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':1,'adjFear':2, 'tripleCombo':2
 	},
 	decayedDisaster:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':0,
+		'violentMedicalLong':2,'decayedDisaster':0,
 		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':1,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	toolTime:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':0,'toolAssistance':1,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	toolAssistance:{
 		'violentMedical':1,'decayedBodyPartOperation':1,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':1,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':1,'toolAssistance':0,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	violentPolitics:{
 		'violentMedical':1,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':1,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':0,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':1,'simpleVillain':2,'metalLocation':2,
-		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	visceraLocation:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
-		'violentMedicalLong':1,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':1,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':0,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':1,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	metalBuildings:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
 		'verbAgent':1,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':1,
+		'violentMedicalLong':2,'decayedDisaster':1,
 		'agentsOfDisaster':1,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':0,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':1,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':1,'adjFear':2, 'tripleCombo':2
 	},
 	villain:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':0,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':1
+		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':1, 'tripleCombo':2
 	},
 	politicalImagery:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':1,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':1,'visceraLocation':2,'metalBuildings':2,
 		'villain':1,'politicalImagery':0,'simpleVillain':2,'metalLocation':2,
-		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':1
+		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':1, 'tripleCombo':2
 	},
 	simpleVillain:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':1,'politicalImagery':2,'simpleVillain':0,'metalLocation':2,
-		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	metalLocation:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':1,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':1,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':0,
-		'rebel':2,'badMagic':2,'radMagic':1,'adjFear':2
+		'rebel':2,'badMagic':2,'radMagic':1,'adjFear':2, 'tripleCombo':2
 	},
 	rebel:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':1,'visceraLocation':2,'metalBuildings':2,
 		'villain':1,'politicalImagery':1,'simpleVillain':1,'metalLocation':2,
-		'rebel':0,'badMagic':2,'radMagic':2,'adjFear':2
+		'rebel':0,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2
 	},
 	badMagic:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':1,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':1,
+		'violentMedicalLong':2,'decayedDisaster':1,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':0,'radMagic':1,'adjFear':2
+		'rebel':2,'badMagic':0,'radMagic':1,'adjFear':2, 'tripleCombo':2
 	},
 	radMagic:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':1,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':1,'metalBuildings':1,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':1,
-		'rebel':2,'badMagic':1,'radMagic':0,'adjFear':2
+		'rebel':2,'badMagic':1,'radMagic':0,'adjFear':2, 'tripleCombo':2
 	},
 	adjFear:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
 		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
-		'violentMedicalLong':2,'medicalDisaster':2,'decayedDisaster':2,
+		'violentMedicalLong':2,'decayedDisaster':2,
 		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':1,'politicalImagery':1,'simpleVillain':2,'metalLocation':2,
-		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':0
+		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':0,'tripleCombo':2
+	},
+	tripleCombo:{
+		'violentMedical':1,'decayedBodyPartOperation':2,'doubleRot':2,
+		'verbAgent':2,'actionsOfTheAdjective':2,'decayedPartOfTheAgent':2,
+		'violentMedicalLong':1,'decayedDisaster':2,
+		'agentsOfDisaster':2,'toolTime':2,'toolAssistance':2,
+		'violentPolitics':1,'visceraLocation':2,'metalBuildings':2,
+		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':1,
+		'rebel':2,'badMagic':2,'radMagic':1,'adjFear':2,'tripleCombo':0	
 	}
 
 }

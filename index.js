@@ -51,9 +51,9 @@ var templates = {
 		//Example: Compulsive Lobotomy of the Rotten
 		return pickRandom(resources.d.violentAdverbs)+' '+pickRandom(resources.d.medicalTerms)+' of the '+pickRandom(resources.d.adjectives)
 	},
-	medicalDisaster:function(){
-		//Example: Excision Cataclysm
-		return pickRandom(resources.d.medicalTerms)+' '+pickRandom(resources.d.naturalDisasters)
+	tripleCombo:function(){
+		//Example: Horrific Obsessive Strangulation
+		return pickRandom(resources.d.shockBois)+' '+pickRandom(resources.d.violentAdverbs)+' '+pickRandom(resources.d.metalSoundingVerbs)
 	},
 	decayedDisaster:function(){
 		//Example: Rotted Eruption
@@ -132,7 +132,7 @@ function postMessage(message){
 function updateMessage(){
 	let resource_keys = Object.keys(resources.d)
 	let terms = 0;
-	let version = '2.1.4' // This is super loose and doesn't follow any kind of conventions
+	let version = '2.1.6' // This is super loose and doesn't follow any kind of conventions
 	//Count the total number of terms used in every dictionary in resources
 	resource_keys.forEach((key)=>{
 		terms += resources.d[key].length
