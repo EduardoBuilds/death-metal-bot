@@ -4,6 +4,6 @@ function pickRandom(array){
 }
 
 function TestTemplate(){
-	console.log(pickRandom(resources.d.shockBois)+' '+pickRandom(resources.d.violentAdverbs)+' '+pickRandom(resources.d.metalSoundingVerbs))
+	console.log(pickRandom(resources.d.evilAdjective)+' '+pickRandom(resources.d.actualDecay))
 }
 setInterval(()=>TestTemplate(),500)

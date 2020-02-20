@@ -114,6 +114,22 @@ var templates = {
 	adjFear:function(){
 		//Example: Somber Horror
 		return pickRandom(resources.d.wildCardAdjectives)+' '+pickRandom(resources.d.fears)
+	},
+	vagueViolence:function(){
+		//Example: Overtones of Profanation
+		return pickRandom(resources.d.vagueness)+' of '+pickRandom(resources.d.metalSoundingVerbs)
+	},
+	malignantDecay:function(){
+		//Example: Malignant Decay, duh
+		return pickRandom(resources.d.evilAdjective)+' '+pickRandom(resources.d.actualDecay)
+	},
+	magicRuler:function(){
+		//Example: Chant of the Malevolent Impaler
+		return pickRandom(resources.d.magic)+' of the '+pickRandom(resources.d.evilAdjective) +' '+pickRandom(resources.d.titles)
+	},
+	wastingBody:function(){
+		//Example: Plague of the Spirit
+		return pickRandom(resources.d.actualDecay)+' of the '+pickRandom(resources.d.singularBodyParts)
 	}
 }
 
@@ -132,7 +148,7 @@ function postMessage(message){
 function updateMessage(){
 	let resource_keys = Object.keys(resources.d)
 	let terms = 0;
-	let version = '2.1.6' // This is super loose and doesn't follow any kind of conventions
+	let version = '2.1.8' // This is super loose and doesn't follow any kind of conventions
 	//Count the total number of terms used in every dictionary in resources
 	resource_keys.forEach((key)=>{
 		terms += resources.d[key].length
