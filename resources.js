@@ -108,7 +108,7 @@ var markovChain = {
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':2,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
 		'rebel':2,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2,
-		'vagueViolence':1,'malignantDecay':2'magicRuler':2,'wastingBody':2
+		'vagueViolence':1,'malignantDecay':2,'magicRuler':2,'wastingBody':2
 	},
 	decayedPartOfTheAgent:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,
@@ -198,7 +198,7 @@ var markovChain = {
 		'violentPolitics':2,'visceraLocation':2,'metalBuildings':2,
 		'villain':0,'politicalImagery':2,'simpleVillain':2,'metalLocation':2,
 		'rebel':1,'badMagic':2,'radMagic':2,'adjFear':1, 'tripleCombo':2,
-		'vagueViolence':2,'malignantDecay':2,'magicRuler':1,'wastingBody':2
+		'vagueViolence':2,'malignantDecay':2,'magicRuler':1,'wastingBody':3
 	},
 	politicalImagery:{
 		'violentMedical':2,'decayedBodyPartOperation':2,'doubleRot':2,
@@ -238,7 +238,7 @@ var markovChain = {
 		'violentPolitics':1,'visceraLocation':2,'metalBuildings':2,
 		'villain':1,'politicalImagery':1,'simpleVillain':1,'metalLocation':2,
 		'rebel':0,'badMagic':2,'radMagic':2,'adjFear':2, 'tripleCombo':2,
-		'vagueViolence':2,'malignantDecay':2,'magicRuler':2,'wastingBody':2
+		'vagueViolence':2,'malignantDecay':2,'magicRuler':2,'wastingBody':3
 	},
 	badMagic:{
 		'violentMedical':2,'decayedBodyPartOperation':1,'doubleRot':1,

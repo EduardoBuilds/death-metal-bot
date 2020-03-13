@@ -148,7 +148,7 @@ function postMessage(message){
 function updateMessage(){
 	let resource_keys = Object.keys(resources.d)
 	let terms = 0;
-	let version = '2.1.8' // This is super loose and doesn't follow any kind of conventions
+	let version = '2.1.9' // This is super loose and doesn't follow any kind of conventions
 	//Count the total number of terms used in every dictionary in resources
 	resource_keys.forEach((key)=>{
 		terms += resources.d[key].length
